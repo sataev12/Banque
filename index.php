@@ -6,19 +6,29 @@ spl_autoload_register(function($class_name){
 });
 
 
-
-
-
 $titulaireOne = new Titulaire("Ansu", "Fati", '1993-11-15', "STRASBOURG");
 
 
-$banqueCompte = new Comptebanque("CompteCourant", 100.5, 'EUR', $titulaireOne);
 
-$banqueCompte->afficherInfo();
-echo "<br>                                          <br>";
+
+
+
+$banqueCompte = new Comptebanque("CompteCourant", 100.5, 'EUR', $titulaireOne);
 $LivretA = new ComptelivretA("Livret A", 500.0, "EUR", $titulaireOne);
 
+$titulaireOne->ajouterCompte($banqueCompte);
+$titulaireOne->ajouterCompte($LivretA);
+$titulaireOne->afficherInformations();
 
-$banqueCompte->virementVersUnAutreCompte($LivretA, 20.0);
-$LivretA->virementVersUnAutreCompte($banqueCompte, 20.0);
-$banqueCompte->afficherInfo();
+
+// $titulaireOne->ajouterCompte($banqueCompte, $LivretA);
+
+
+// $banqueCompte->afficherInfo();
+// echo "<br>                                          <br>";
+
+
+
+// $banqueCompte->virementVersUnAutreCompte($LivretA, 20.0);
+// $LivretA->virementVersUnAutreCompte($banqueCompte, 20.0);
+// $banqueCompte->afficherInfo();

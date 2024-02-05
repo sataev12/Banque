@@ -76,8 +76,9 @@ class Titulaire {
         return "{$this->nom}" . ' ' . "{$this->prenom}";
     }
 
-    public function ajouterCompte($ensembleCompteBanquaire){
-        $this->ensembleCompteBanquaire[] = $ensembleCompteBanquaire;
+    public function ajouterCompte($compte){
+       
+        $this->ensembleCompteBanquaire[] = $compte;
     }
 
     public function calculerAge(){
@@ -89,10 +90,16 @@ class Titulaire {
     }
 
     public function afficherInformations() {
+        echo "<h2>Titulaire du compte</h2><br>";
         echo "{$this}<br>";
         echo "Date de naissance : {$this->dateDeNaissance->format('Y-m-d')}<br>";
         echo "Ville: {$this->ville}<br>";
         echo "Age :" . $this->calculerAge() . " ans<br>";
+        echo "Comptes associes : <br>";
+        foreach ($this->ensembleCompteBanquaire as $compte) {
+            echo " - {$compte}<br>";
+        }
+        echo "<br>";
     }
     
 }
