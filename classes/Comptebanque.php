@@ -2,9 +2,9 @@
 
 class Comptebanque {
     protected string $libelle;
-    protected float $soldeInitiale = 100;
+    protected float $soldeInitiale;
     protected string $devise;
-    protected Titulaire $titulaireUnique;
+    private Titulaire $titulaireUnique;
 
     public function __construct(string $libelle, float $soldeInitiale, string $devise, Titulaire $titulaireUnique)
     {
@@ -12,7 +12,11 @@ class Comptebanque {
         $this->soldeInitiale = $soldeInitiale;
         $this->devise = $devise;
         $this->titulaireUnique = $titulaireUnique;
+
+        $titulaireUnique->ajouterCompte($this);
     }
+
+    
 
     
 
@@ -65,7 +69,33 @@ class Comptebanque {
 
     public function crediter($montant){
         $this->soldeInitiale += $montant;
-        return $this->soldeInitiale;
-        
+        return "Le compte a été crédité de {$montant} {$this->devise}. Nouveau solde : {$this->soldeInitiale} {$this->devise}<br>";
     }
+
+    public function debiter($montant) {
+        if($montant <= $this->soldeInitiale) {
+            $this->soldeInitiale -= $montant;
+            echo "Le compte a été débité de {$montant} {$this->devise}. Nouveau solde : {$this->soldeInitiale} {$this->devise}<br>";
+        }else{
+            echo "solde insuffisant pour effectuer le débit.<br>";
+        }
+    }
+
+    public function virementVersUnAutreCompte($LivretA, $montant) {
+        if($montant <=$this->soldeInitiale){
+            $this->soldeInitiale -= $montant;
+            $LivretA->soldeInitiale += $montant;
+            echo "Virement de {$montant} {$this->devise} vers le Livret A effectué. <br>";
+        }else {
+            echo "Solde insuffisant pour effectuer le virement . <br>";
+        }
+    }
+
+    public function afficherInfo(){
+        echo "Libellé : ". $this . "<br>";
+        echo "Solde Initial : {$this->soldeInitiale} {$this->devise}<br>";
+        echo "Titulaire : {$this->titulaireUnique}<br>";
+    }
+
+   
 }
