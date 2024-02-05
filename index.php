@@ -21,14 +21,8 @@ $titulaireOne->ajouterCompte($LivretA);
 $titulaireOne->afficherInformations();
 
 
-// $titulaireOne->ajouterCompte($banqueCompte, $LivretA);
+$banqueCompte->afficherInfo();
+$LivretA->crediter(50.0);
 
-
-// $banqueCompte->afficherInfo();
-// echo "<br>                                          <br>";
-
-
-
-// $banqueCompte->virementVersUnAutreCompte($LivretA, 20.0);
-// $LivretA->virementVersUnAutreCompte($banqueCompte, 20.0);
-// $banqueCompte->afficherInfo();
+$LivretA->virementVersUnAutreCompte($banqueCompte, 30);
+$banqueCompte->afficherInfo();

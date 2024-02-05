@@ -69,7 +69,7 @@ class Comptebanque {
 
     public function crediter($montant){
         $this->soldeInitiale += $montant;
-        return "Le compte a été crédité de {$montant} {$this->devise}. Nouveau solde : {$this->soldeInitiale} {$this->devise}<br>";
+        echo "Le compte a été crédité de {$montant} {$this->devise}. Nouveau solde : {$this->soldeInitiale} {$this->devise}<br>";
     }
 
     public function debiter($montant) {
