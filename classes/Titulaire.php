@@ -5,13 +5,15 @@ class Titulaire {
     protected string $prenom;
     protected DateTime $dateDeNaissance;
     protected string $ville;
-    protected array $ensembleCompteBanquaire = [];
+    protected array $ensembleCompteBanquaire;
 
     public function __construct(string $nom, string $prenom, $dateDeNaissance, string $ville){
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->dateDeNaissance = new DateTime($dateDeNaissance);
         $this->ville = $ville;
+
+        $this->ensembleCompteBanquaire = [];
     }
 
     
@@ -76,7 +78,7 @@ class Titulaire {
         return "{$this->nom}" . ' ' . "{$this->prenom}";
     }
 
-    public function ajouterCompte($compte){
+    public function ajouterCompte(Comptebanque $compte){
        
         $this->ensembleCompteBanquaire[] = $compte;
     }

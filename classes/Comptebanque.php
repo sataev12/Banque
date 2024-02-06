@@ -13,7 +13,7 @@ class Comptebanque {
         $this->devise = $devise;
         $this->titulaireUnique = $titulaireUnique;
 
-        
+        $this->titulaireUnique->ajouterCompte($this);
     }
 
     

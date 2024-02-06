@@ -17,8 +17,8 @@ $banqueCompte = new Comptebanque("CompteCourant", 100.5, 'EUR', $titulaireOne);
 $LivretA = new ComptelivretA("Livret A", 500.0, "EUR", $titulaireOne);
 
 //Ajout des compte pour un titulaire
-$titulaireOne->ajouterCompte($banqueCompte);
-$titulaireOne->ajouterCompte($LivretA);
+// $titulaireOne->ajouterCompte($banqueCompte);
+// $titulaireOne->ajouterCompte($LivretA);
 //Affiche Info
 $titulaireOne->afficherInformations();
 
